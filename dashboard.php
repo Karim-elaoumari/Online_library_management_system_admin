@@ -171,7 +171,12 @@
 				<!-- test -->
 			
 			</div>
+			
 			</div>
+			<!-- begin footer  -->
+			<?php include("includes/footer.php"); ?>
+	        <!-- end footer -->
+			
 		<!-- END #content -->
 		<?php include("includes/products_add_modal.php"); ?>
 		<?php include("includes/products_solded_modal.php"); ?>
@@ -182,9 +187,7 @@
 		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"><i class="fa fa-angle-up"></i></a>
 		<!-- END scroll-top-btn -->
 	</div>
-	<!-- begin footer  -->
-	<?php include("includes/footer.php"); ?>
-	<!-- end footer -->
+	
 	
 
 	<!-- END #app -->

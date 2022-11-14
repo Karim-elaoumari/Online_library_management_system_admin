@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand fs-3" href="#">
+    <a class="navbar-brand fs-2" href="#">
         <img src="assets/img/logo/logo-q.png" width="50" height="" class="d-inline-block align-top ms-2" alt="">
     You<span  style="color: hsl(218, 81%, 75%)">Code</span> Library
     </a>

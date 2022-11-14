@@ -1,10 +1,21 @@
 <nav class="navbar navbar-light bg-light">
-			<a class="navbar-brand fs-3" href="dashboard.php">
+	<style>
+		@media (max-width: 425px) {
+    .hidih{
+        display: none;
+    }
+
+     
+    
+    
+}
+	</style>
+			<a class="navbar-brand fs-1" href="dashboard.php">
 				<img src="assets/img/logo/logo-q.png" width="50" height="" class="d-inline-block align-top ms-2" alt="">
 			You<span  style="color: hsl(218, 81%, 75%)">Code</span> Library
 			</a>
 			<div class="btn-group dropstart">
-			<h5 id="full_name" class="mt-2 me-2"><?php echo $_SESSION['user_first_name']." ".$_SESSION['user_last_name'];?></h5>
+			<h5 id="full_name" class="mt-2 me-2 hidih"><?php echo $_SESSION['user_first_name']." ".$_SESSION['user_last_name'];?></h5>
 			<div class="rounded-circle" data-bs-toggle="dropdown" aria-expanded="false"><img id="photo_admin"class="rounded-circle w-55px pe-3" src="assets/img/user/<?php echo $_SESSION['user_photo'];?>" alt=""></div>
 		   
 			<ul class="dropdown-menu">
