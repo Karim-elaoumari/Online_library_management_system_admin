@@ -12,37 +12,31 @@
 				<th >Name</th>
 				<th >Qantity</th>
 				<th >Price</th>
+				<th >Total Price</th>
                 <th>sold date </th>
 				</tr>
 			</thead>
 			<tbody>
+			<?php
+			    $sql = "SELECT * FROM books inner join sales on books.id = sales.book_id ";
+				$result = mysqli_query($conn, $sql);
+				if (mysqli_num_rows($result) > 0){
+					$total=0;
+				while($row = mysqli_fetch_assoc($result)){
+					$total+=$row["price"]*$row["quantity_solded"];
+			?>
 				<tr>
-				<th >efbhzief</th>
-				<td>20</td>
-				<td>$ 10</td>
-                <td>10/11/2022 </td>
+				<th ><?php echo $row["name"]; ?></th>
+				<td><?php echo $row["quantity_solded"]; ?></td>
+				<td>$ <?php echo $row["price"]; ?></td>
+				<td>$ <?php echo $row["price"]*$row["quantity_solded"]; ?></td>
+                <td><?php echo $row["date_sold"]; ?></td>
+
+				<?php }} ?>
 				
-				</tr>
-				<tr>
-				<th >efbhzief</th>
-				<td>20</td>
-				<td>$ 10</td>
-				<td>10/11/2022 </td>
-				</tr>
-				<tr>
-				<th>efbhzief</th>
-				<td>20</td>
-				<td>$ 10</td>
-				<td>10/11/2022 </td>
-				</tr>
-				<tr>
-				<th >efbhzief</th>
-				<td>20</td>
-				<td>$ 10</td>
-				<td>10/11/2022 </td>
-				</tr>
+				
                 <tr>
-                   <td colspan="4"> <h3>Total : $ 200</h3> </td>
+                   <td colspan="5"> <h3>Total :  $ <?php echo $total;?> </h3> </td>
                 </tr>
 			
 			</tbody>

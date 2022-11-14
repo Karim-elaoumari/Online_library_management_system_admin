@@ -134,7 +134,7 @@
 						echo "<script>document.getElementById('email_edit').setAttribute('value','".$email."')</script>";
 						echo "<script>document.getElementById('edit_first').setAttribute('value','".$first_name."')</script>";
 						echo "<script>document.getElementById('edit_last').setAttribute('value','".$last_name."')</script>";
-						$_SESSION['message'] = 'Changes made seccessefuly ';
+						$_SESSION['message'] = 'Changes made seccessefuly';
 					}
 			    }
 				else{

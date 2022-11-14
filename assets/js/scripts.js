@@ -99,6 +99,15 @@ function reset(){
     document.getElementById("rem_pass").style.display           ="block";
     document.getElementById("reset_pass").style.display        ="none";
     document.getElementById("password").removeAttribute("required");
-
+}
+function show_desc(desc){
+   document.getElementById("desc_showed").innerText=desc;
+}
+function edit_b(name,desc,link,quantity,price){
+    document.getElementById("edit_name").value =name;
+    document.getElementById("edit_link").value =link;
+    document.getElementById("edit_quantity").value =quantity;
+    document.getElementById("edit_price").value =price;
+    document.getElementById("edit_desc").value =desc;
 }
 

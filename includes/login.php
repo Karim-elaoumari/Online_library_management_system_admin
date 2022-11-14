@@ -4,10 +4,11 @@ session_start();
 if(isset($_POST['sign-in'])){
     $email =$_POST["email"];
     $password = $_POST["password"];
-    $sql = "SELECT id,first_name,last_name,email,password,photo FROM admins";
+    $sql = "SELECT * FROM admins";
     $result = mysqli_query($conn, $sql);
     $iss=0;
-    if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($result) > 0){
+
     while($row = mysqli_fetch_assoc($result)){
         if($email==$row['email'] && $password==$row["password"]){
            $iss=1;

@@ -15,32 +15,18 @@
 				</tr>
 			</thead>
 			<tbody>
+			<?php
+			    $sql = "SELECT * FROM admins";
+				$result = mysqli_query($conn, $sql);
+				if (mysqli_num_rows($result) > 0){
+				while($row = mysqli_fetch_assoc($result)){
+			?>
 				<tr>
-				<th >Elisa Marie</th>
-				<td><img src="assets/img/user/images.jpg" width="50"  alt=""></td>
-				<td>elaoumarikarim@gmail.com</td>
-                
-				
+				<th ><?php echo $row["first_name"]." ".$row["last_name"];?></th>
+				<td><img src="assets/img/user/<?php echo $row["photo"];?>" width="50"  alt=""></td>
+				<td><?php echo $row["email"];?></td>
 				</tr>
-				<tr>
-				<th >Elisa Marie</th>
-				<td><img src="assets/img/user/images.jpg" width="50"  alt=""></td>
-				<td>elaoumarikarim@gmail.com</td>
-				
-				</tr>
-				<tr>
-				<th>Elisa Marie</th>
-				<td><img src="assets/img/user/images.jpg" width="50"  alt=""></td>
-				<td>elaoumarikarim@gmail.com</td>
-				
-				</tr>
-				<tr>
-				<th >Elisa Marie</th>
-				<td><img src="assets/img/user/images.jpg" width="50"  alt=""></td>
-				<td>elaoumarikarim@gmail.com</td>
-				
-				</tr>
-                
+			<?php }} ?>
 			
 			</tbody>
 			</table>

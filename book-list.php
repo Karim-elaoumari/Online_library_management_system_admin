@@ -97,44 +97,25 @@
 				<th >Tools</th>
 				</tr>
 			</thead>
+
 			<tbody>
+				<?php 
+				$sql = "SELECT * FROM `books` ";
+				$result = mysqli_query($conn, $sql);
+				if (mysqli_num_rows($result) > 0){
+				while($row = mysqli_fetch_assoc($result)){
+				?>
 				<tr>
-				<th >efbhzief</th>
-				<td><img src="assets/img/logo/logo-q.png" width="50"  alt=""></td>
-				<td><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#descriptiona">View</button></td>
-				<td>@mdo</td>
-				<td>20</td>
-				<td>$ 10</td>
-				<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit">Edit</button><button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>
+				<th ><?php  echo $row["name"]?></th>
+				<td><img src="assets/img/product/<?php echo $row["photo"]?>" width="50"  alt=""><button type="button" class="btn btn-outline-info btn-sm ms-2" onclick="show_desc(`<?php echo $row['description']?>`)" data-bs-toggle="modal" data-bs-target="#edit_photo">edit</button></td>
+				<td><button type="button" class="btn btn-info" onclick="show_desc(`<?php echo $row['description']?>`)" data-bs-toggle="modal" data-bs-target="#descriptiona">View</button></td>
+				<td><?php  echo $row["link"]?></td>
+				<td><?php  echo $row["quantity"]?></td>
+				<td>$ <?php  echo $row["price"]?></td>
+				<td><button type="button" class="btn btn-primary" onclick="edit_b(`<?php echo $row['name']?>`,`<?php echo $row['description']?>`,`<?php echo $row['link']?>`,`<?php echo $row['quantity']?>`,`<?php echo $row['price']?>`)" data-bs-toggle="modal" data-bs-target="#edit">Edit</button><button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>
 				</tr>
-				<tr>
-				<th >efbhzief</th>
-				<td><img src="assets/img/logo/logo-q.png" width="50"  alt=""></td>
-				<td><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#descriptiona">View</button></td>
-				<td>@mdo</td>
-				<td>20</td>
-				<td>$ 10</td>
-				<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit">Edit</button><button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>
-				</tr>
-				<tr>
-				<th>efbhzief</th>
-				<td><img src="assets/img/logo/logo-q.png" width="50"  alt=""></td>
-				<td><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#descriptiona">View</button></td>
-				<td>@mdo</td>
-				<td>20</td>
-				<td>$ 10</td>
-				<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit" >Edit</button><button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>
-				</tr>
-				<tr>
-				<th >efbhzief</th>
-				<td><img src="assets/img/logo/logo-q.png" width="50"  alt=""></td>
-				<td><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#descriptiona">View</button></td>
-				<td>@mdo</td>
-				<td>20</td>
-				<td>$ 10</td>
-				<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit">Edit</button><button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>
-				</tr>
-			
+
+				<?php }} ?>
 			</tbody>
 			</table>
 		
