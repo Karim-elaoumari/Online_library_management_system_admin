@@ -44,6 +44,7 @@
 			
 
 			<!-- Modal -->
+			<?php include("includes/products_add_modal.php"); ?>
 			<?php  require "includes/profile.php";?>
 			<!-- end modal -->
 			<?php if (isset($_SESSION['message'])): ?>
@@ -178,7 +179,7 @@
 	        <!-- end footer -->
 			
 		<!-- END #content -->
-		<?php include("includes/products_add_modal.php"); ?>
+		
 		<?php include("includes/products_solded_modal.php"); ?>
 		<?php include("includes/admins_modal.php"); ?>
 		

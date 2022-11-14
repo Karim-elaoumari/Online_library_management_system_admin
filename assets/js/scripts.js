@@ -64,6 +64,10 @@ function loadFile(e){
     var image = document.getElementById('profile_image');
 	image.src = URL.createObjectURL(e.target.files[0]);
 }
+function loadFile_b(e){
+    var image = document.getElementById('b_photo');
+	image.src = URL.createObjectURL(e.target.files[0]);
+}
 function apear_sign_in(){
     document.getElementById("rem_pass").style.display           ="none";
     document.getElementById("have_acc").style.display          ="none";
@@ -103,11 +107,17 @@ function reset(){
 function show_desc(desc){
    document.getElementById("desc_showed").innerText=desc;
 }
-function edit_b(name,desc,link,quantity,price){
-    document.getElementById("edit_name").value =name;
-    document.getElementById("edit_link").value =link;
-    document.getElementById("edit_quantity").value =quantity;
-    document.getElementById("edit_price").value =price;
-    document.getElementById("edit_desc").value =desc;
+function edit_b(id,name,desc,link,quantity,price){
+    document.getElementById("edit_name").value     = name;
+    document.getElementById("edit_link").value     = link;
+    document.getElementById("edit_quantity").value = quantity;
+    document.getElementById("edit_price").value    = price;
+    document.getElementById("edit_desc").value     = desc;
+}
+function show_photo(photo,id){
+    document.getElementById('b_photo').setAttribute('src','assets/img/product/'+photo);
+    document.getElementById("auto_url_photo").value = photo;
+    document.getElementById("b_id_pho").value       = id;
+
 }
 

@@ -19,8 +19,6 @@
 </div>
 			<!-- end modal -->
 
-<!-- Add -->
-
 <!-- Update Photo -->
 <div class="modal fade" id="edit_photo">
 <div class="modal-dialog modal-sm">
@@ -30,24 +28,29 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-            <div class="modal-body">
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
+            <div class="modal-body row justify-content-around">
+            <form  method="post" action="" enctype="multipart/form-data">
+            <div class="card" style="width: 90%">
+              <img src="assets/img/product/Capture.png" id="b_photo" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+            
+               <input type="file" class="form-control" id="edit_b_photo" name="edit_b_photo" onchange="loadFile_b(event);">
+               <input type="hidden" name="auto_b_photo" id="auto_url_photo">
+               <input type="hidden" name="b_id_pho" id="b_id_pho">
+               
               </div>
             </div>
 
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-success btn-flat" name="edit_b"><i class="fa fa-check-square-o"></i> Update</button>
+              <button type="submit" class="btn btn-success btn-flat" name="edit_bo_photo"><i class="fa fa-check-square-o"></i> Update</button>
               </form>
             </div>
     </div>
 </div>
+</div>
+<!-- modal delete -->
 <div class="modal fade" id="delete">
     <div class=" modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content text-danger">
@@ -82,8 +85,6 @@
               <form class="form-horizontal" method="POST" action="products_edit.php">
                 <input type="hidden" class="prodid" name="id">
                 <div class="form-group row">
-                  
-
                   <div class="col-4">
                     <label for="edit_name" class="col-sm-1 control-label">Name</label>
                     <input type="text" class="form-control" id="edit_name" name="name">
@@ -123,4 +124,24 @@
     </div>
 </div>
 
+<?php
+if(isset($_POST["edit_bo_photo"])){
+  $id = $_POST["b_id_pho"];
+  $picc                = $_FILES["edit_b_photo"]["name"];
+  if($picc==""){
+    $picc              = $_POST["auto_b_photo"];
+  }
+  $target              = "assets/img/product/".$picc;
+  $sourcePath          = $_FILES['edit_b_photo']['tmp_name'];
+  move_uploaded_file($sourcePath,$target);
+  $sql = "UPDATE `books` SET `photo`='$picc' WHERE  `id`='$id'";
+  if (mysqli_query($conn,$sql)){
+    $_SESSION['message'] = 'Changes made seccessefuly';
+
+  }
+  else{
+    $_SESSION['danger']  = 'Action Failed Try again !';
+  
+  }
+}
 

@@ -43,6 +43,8 @@
 			
 
 			<!-- Modal -->
+			<?php include("includes/products_modal.php"); ?>
+			<?php include("includes/products_add_modal.php"); ?>
 			<?php  require "includes/profile.php";?>
 			<!-- end modal -->
 		
@@ -63,7 +65,7 @@
 			<?php  require "includes/aside.php";?>
             </div>
 			<div class="col-11 ps-5 ms-5 pt-5">
-			    <?php if (isset($_SESSION['message'])): ?>
+			    <?php if (isset($_SESSION['message'])):?>
 					<div class="alert alert-green alert-dismissible fade show">
 					<strong>Success!</strong>
 						<?php 
@@ -72,7 +74,18 @@
 						?>
 						<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
 					</div>
-					<?php endif ?>
+				<?php endif ?>
+
+				<?php if (isset($_SESSION['alert'])):?>
+					<div class="alert alert-green alert-dismissible fade show">
+					<strong>Success!</strong>
+						<?php 
+							echo $_SESSION['alert']; 
+							unset($_SESSION['alert']);
+						?>
+						<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+					</div>
+				<?php endif ?>
 
 
 					<?php if (isset($_SESSION['danger'])): ?>
@@ -107,12 +120,12 @@
 				?>
 				<tr>
 				<th ><?php  echo $row["name"]?></th>
-				<td><img src="assets/img/product/<?php echo $row["photo"]?>" width="50"  alt=""><button type="button" class="btn btn-outline-info btn-sm ms-2" onclick="show_desc(`<?php echo $row['description']?>`)" data-bs-toggle="modal" data-bs-target="#edit_photo">edit</button></td>
+				<td><img src="assets/img/product/<?php echo $row["photo"]?>" width="50"  alt=""><button type="button" class="btn btn-outline-info btn-sm ms-2" onclick="show_photo(`<?php echo $row['photo']?>`,<?php echo $row['id'];?>)" data-bs-toggle="modal" data-bs-target="#edit_photo">edit</button></td>
 				<td><button type="button" class="btn btn-info" onclick="show_desc(`<?php echo $row['description']?>`)" data-bs-toggle="modal" data-bs-target="#descriptiona">View</button></td>
 				<td><?php  echo $row["link"]?></td>
 				<td><?php  echo $row["quantity"]?></td>
 				<td>$ <?php  echo $row["price"]?></td>
-				<td><button type="button" class="btn btn-primary" onclick="edit_b(`<?php echo $row['name']?>`,`<?php echo $row['description']?>`,`<?php echo $row['link']?>`,`<?php echo $row['quantity']?>`,`<?php echo $row['price']?>`)" data-bs-toggle="modal" data-bs-target="#edit">Edit</button><button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>
+				<td><button type="button" class="btn btn-primary" onclick="edit_b(<?php echo $row['id'];?>,`<?php echo $row['name']?>`,`<?php echo $row['description']?>`,`<?php echo $row['link']?>`,`<?php echo $row['quantity']?>`,`<?php echo $row['price']?>`)" data-bs-toggle="modal" data-bs-target="#edit">Edit</button><button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>
 				</tr>
 
 				<?php }} ?>
@@ -123,9 +136,8 @@
 			</div>
 		<!-- END #content -->
 		<!-- products-modals -->
-		<?php include("includes/products_modal.php"); ?>
+		
 		<?php include("includes/products_add_modal.php"); ?>
-		<?php include("includes/products_solded_modal.php"); ?>
 		<?php include("includes/admins_modal.php"); ?>
 		<!-- products-modals -->
 
@@ -137,7 +149,7 @@
 		<!-- END scroll-top-btn -->
 	</div>
 	<!-- begin footer  -->
-	<?php include("includes/footer.php"); ?>
+	<?php include("includes/footer.php");?>
 	<!-- end footer -->
 	
 
@@ -145,8 +157,8 @@
 	<!-- ================== BEGIN core-js ================== -->
     
 	<script src="assets/js/vendor.min.js"></script>
-	<script src="assets/js/app.min.js"></script>
-	<script src="assets/js/scripts.js"></script>
+	<script src="assets/js/app.min.js">   </script>
+	<script src="assets/js/scripts.js">   </script>
     
 	<!-- ================== END core-js ================== -->
 </body>

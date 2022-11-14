@@ -149,10 +149,13 @@
 				$sql = "UPDATE `admins` SET `password`='$pass' WHERE  `id`='$id'";
 
 					if (mysqli_query($conn, $sql)){
-						$_SESSION["user_password"]           = $pass;
+						$_SESSION["user_password"]          = $pass;
 						echo "<script>document.getElementById('hdn_session_pass').setAttribute('value','".$pass."')</script>";
 						echo "<script>document.getElementById('hdn_session_pass2').setAttribute('value','".$pass."')</script>";
 						$_SESSION['message'] = 'Password changed seccessefuly ';
+					}
+					else{
+						$_SESSION['danger'] = 'Wrong Password Confirmation Try again !';
 					}
 
 			}
