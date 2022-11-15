@@ -47,28 +47,7 @@
 			<?php include("includes/products_add_modal.php"); ?>
 			<?php  require "includes/profile.php";?>
 			<!-- end modal -->
-			<?php if (isset($_SESSION['message'])): ?>
-					<div class="alert alert-green alert-dismissible fade show">
-					<strong>Success!</strong>
-						<?php 
-							echo $_SESSION['message']; 
-							unset($_SESSION['message']);
-						?>
-						<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
-					</div>
-					<?php endif ?>
-
-
-					<?php if (isset($_SESSION['danger'])): ?>
-					<div class="alert alert-danger alert-dismissible fade show">
-					<strong>Failed!</strong>
-						<?php 
-							echo $_SESSION['danger']; 
-							unset($_SESSION['danger']);
-						?>
-						<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
-					</div>
-			<?php endif ?>
+			
 		
        
 
@@ -89,6 +68,30 @@
             </div>
 			
 			<div class="col-11 px-4 py-5 ">
+				<div class="ps-5 ms-5">
+			<?php if (isset($_SESSION['message'])): ?>
+					<div class="alert alert-green alert-dismissible fade show ms-5 ">
+					<strong>Success!</strong>
+						<?php 
+							echo $_SESSION['message']; 
+							unset($_SESSION['message']);
+						?>
+						<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+					</div>
+					<?php endif ?>
+
+
+					<?php if (isset($_SESSION['danger'])): ?>
+					<div class="alert alert-danger alert-dismissible fade show ms-5">
+					<strong>Failed!</strong>
+						<?php 
+							echo $_SESSION['danger']; 
+							unset($_SESSION['danger']);
+						?>
+						<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+					</div>
+			<?php endif ?>
+					</div>
 			    
 				<div class="row justify-content-around ms-5 ps-2">
 					<div class="card col-6 mt-5 bg-danger" style="width: 25rem;color:white;border-radius:0;">

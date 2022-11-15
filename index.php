@@ -41,30 +41,35 @@
 		<!-- nav bar -->
 
 
+		<!-- alert messages -->
+		<?php if (isset($_SESSION['message'])): ?>
+					<div class="alert alert-green alert-dismissible fade show">
+					<strong>Success!</strong>
+						<?php 
+							echo $_SESSION['message']; 
+							unset($_SESSION['message']);
+						?>
+						<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+					</div>
+		<?php endif ?>
+
+
+		<?php if (isset($_SESSION['danger'])): ?>
+					<div class="alert alert-danger alert-dismissible fade show">
+					<strong>Failed!</strong>
+						<?php 
+							echo $_SESSION['danger']; 
+							unset($_SESSION['danger']);
+						?>
+						<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+					</div>
+		<?php endif ?>
+		<!-- alert messages -->
+
+
 		<!-- BEGIN #content -->
 		    <section class="background-radial-gradient overflow-hidden">
-			<?php if (isset($_SESSION['message'])): ?>
-				<div class="alert alert-green alert-dismissible fade show">
-				<strong>Success!</strong>
-					<?php 
-						echo $_SESSION['message']; 
-						unset($_SESSION['message']);
-					?>
-					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
-				</div>
-			    <?php endif ?>
-
-
-				<?php if (isset($_SESSION['danger'])): ?>
-				<div class="alert alert-danger alert-dismissible fade show">
-				<strong>Failed!</strong>
-					<?php 
-						echo $_SESSION['danger']; 
-						unset($_SESSION['danger']);
-					?>
-					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
-				</div>
-			    <?php endif ?>
+			
 			<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
 			   <div class="row gx-lg-5 align-items-center mb-5">
 				<div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
