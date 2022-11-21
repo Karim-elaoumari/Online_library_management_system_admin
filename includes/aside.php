@@ -1,7 +1,7 @@
  
 			<div class="btn-group-vertical w-60px ms-3" role="group" aria-label="First group">
 			
-			<span >
+			<span>
 				<button type="button" class="btn btn-primary bg-black mt-4  px-3 py-2" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"><i class="fa fa-list fs-5"></i></button>
             </span>
 			

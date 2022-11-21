@@ -4,14 +4,14 @@
     use PHPMailer\PHPMailer\Exception;
 
 if(isset($_POST['sign-up'])){
-    $first_name   = $_POST['first-name'];
-    $last_name    = $_POST['last-name'];
-    $email        = $_POST['email'];
-    $sql = "SELECT email FROM admins";
-    $result = mysqli_query($conn, $sql);
+    $first_name        = filter_var($_POST['first-name'],FILTER_SANITIZE_STRING);
+    $last_name         = filter_var($_POST['last-name'],FILTER_SANITIZE_STRING);
+    $email             = filter_var($_POST['email'],FILTER_SANITIZE_STRING);
+    $sql               = "SELECT email FROM admins";
+    $result            = mysqli_query($conn, $sql);
     $is=0;
     if (mysqli_num_rows($result) > 0) {
-    while($row = mysqli_fetch_assoc($result)) {
+    while($row = mysqli_fetch_assoc($result)){
         if($email==$row['email']){
            $is=1;
         }
@@ -47,7 +47,7 @@ if(isset($_POST['sign-up'])){
             $mail = new PHPMailer(true);                             
             try {
                 //Server settings
-                $mail->isSMTP();                                     
+                $mail->isSMTP();                               
                 $mail->Host = 'smtp.gmail.com';                      
                 $mail->SMTPAuth = true;                               
                 $mail->Username = 'elaoumarikarim@gmail.com';      
@@ -56,12 +56,11 @@ if(isset($_POST['sign-up'])){
                     'ssl' => array(
                     'verify_peer' => false,
                     'verify_peer_name' => false,
-                    'allow_self_signed' => true
+                    'allow_self_signed' => true,
                     )
                 );                         
                 $mail->SMTPSecure = 'ssl';                           
-                $mail->Port = 465;                                   
-
+                $mail->Port = 465;                                 
                 $mail->setFrom('elaoumarikarim@gmail.com');
                 
                 //Recipients

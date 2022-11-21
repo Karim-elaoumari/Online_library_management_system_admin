@@ -16,10 +16,11 @@
 	
 	<!-- ================== BEGIN core-css ================== -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-	<link href="assets/css/vendor.min.css" rel="stylesheet" />
-	<link href="assets/css/default/app.min.css" rel="stylesheet" />
+	<link href="assets/css/vendor.min.css" rel="stylesheet"/>
+	<link href="assets/css/default/app.min.css" rel="stylesheet"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="assets/css/styles.css" rel="stylesheet" />
+	<link href="assets/css/styles.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- ================== END core-css ================== -->
 </head>
 <body>
@@ -72,7 +73,8 @@
 			
 			<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
 			   <div class="row gx-lg-5 align-items-center mb-5">
-				<div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+				<div class="col-lg-6 mb-5 mb-lg-0">
+				 <!-- <img class="pe-5" src="assets/img/gallery/books.png" style="width:500px"> -->
 					<h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
 					Welcome To <br />You
 					<span style="color: hsl(218, 81%, 75%)">Code </span>Library
@@ -96,13 +98,13 @@
 						<div class="row" id="full-name">
 							<div class="col-md-6 mb-4">
 							<div class="form-outline" >
-								<input type="text" id="first_name"name="first-name" class="form-control"  required />
+								<input type="text" id="first_name" pattern="[A-Za-z]{3,10}" name="first-name" class="form-control"  required />
 								<label class="form-label" for="form3Example1">First name</label>
 							</div>
 							</div>
 							<div class="col-md-6 mb-4" >
 							<div class="form-outline">
-								<input type="text" id="last_name" name="last-name" class="form-control" required/>
+								<input type="text" id="last_name" pattern="[A-Za-z]{3,10}" name="last-name" class="form-control" required/>
 								<label class="form-label" for="form3Example2">Last name</label>
 							</div>
 							</div>
@@ -120,9 +122,9 @@
 							<label class="form-label" for="form3Example4">Password</label>
 						</div>
 						<div class="form-outline mb-4">
-						<a class="" id="have_acc" onclick="apear_sign_in()">All ready have account ?</a>
-						<a class="" id="reset_pass" onclick="reset()" style="display:none">Forget Password ?</a>
-						<a class="" id="rem_pass" onclick="apear_sign_in()" style="display:none">I remember password !</a>
+						<a class="" id="have_acc" onclick="apear_sign_in()" style="cursor: pointer;">All ready have account ?</a>
+						<a class="" id="reset_pass" onclick="reset()" style="display:none; cursor: pointer;">Forget Password ?</a>
+						<a class="" id="rem_pass" onclick="apear_sign_in()" style="display:none;cursor: pointer;">I remember password !</a>
 				        </div>
 						<!-- Submit button -->
 						

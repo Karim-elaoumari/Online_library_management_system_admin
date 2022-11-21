@@ -8,7 +8,6 @@ if(isset($_POST['sign-in'])){
     $result = mysqli_query($conn, $sql);
     $iss=0;
     if (mysqli_num_rows($result) > 0){
-
     while($row = mysqli_fetch_assoc($result)){
         if($email==$row['email'] && $password==$row["password"]){
            $iss=1;

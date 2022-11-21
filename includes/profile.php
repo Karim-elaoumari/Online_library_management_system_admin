@@ -14,7 +14,7 @@
 						<div class="rounded-circle w-90px col-6"><img class="rounded-circle w-100px pe-4" id="profile_image" src="assets/img/user/<?php echo $_SESSION['user_photo'];?>" alt=""></div>
 						<div class="pt-4 col-6">
 						
-						<input class="form-control form-control-x-sm w-100" name="edit_photo" onchange="loadFile(event);" type="file">
+						<input class="form-control form-control-x-sm w-90px ms-5" name="edit_photo" onchange="loadFile(event);" accept="image/png, image/jpeg, image/jpg" type="file">
 						</div>
                     </div>
 					<div class="row mt-3" id="full-name">
@@ -114,12 +114,15 @@
 				if($pic==""){
 					$pic=$_SESSION["user_photo"];
 				}
-				$target              = "assets/img/user/".$pic;
+				$extension  = pathinfo( $pic, PATHINFO_EXTENSION); // jpg
+				$basename   = substr($_SESSION['user_photo'], 0, -4). "." . $extension; // 5dab1961e93a7_1571494241.jpg
+				$target              = "assets/img/user/{$basename}";
 				$sourcePath          = $_FILES['edit_photo']['tmp_name'];
+				
 				if($confirm_pass==$pass){
 					move_uploaded_file($sourcePath,$target);
 
-					$sql = "UPDATE `admins` SET `first_name`='$first_name',`last_name`='$last_name',`email`='$email',`photo`='$pic' WHERE  `id`='$id'";
+					$sql = "UPDATE `admins` SET `first_name`='$first_name',`last_name`='$last_name',`email`='$email',`photo`='$basename' WHERE  `id`='$id'";
 
 					if (mysqli_query($conn, $sql)){
 						
@@ -127,10 +130,10 @@
 						$_SESSION["user_last_name"]          = $last_name;
 						$_SESSION["user_email"]              = $email;
 						$_SESSION["user_password"]           = $pass;
-						$_SESSION["user_photo"]              = $pic;
+						$_SESSION["user_photo"]              = $basename;
 						echo "<script>document.getElementById('full_name').innerText='".$first_name.' '.$last_name."'</script>";
-						echo "<script>document.getElementById('photo_admin').setAttribute('src','assets/img/user/".$pic."')</script>";
-						echo "<script>document.getElementById('profile_image').setAttribute('src','assets/img/user/".$pic."')</script>";
+						echo "<script>document.getElementById('photo_admin').setAttribute('src','assets/img/user/".$basename."')</script>";
+						echo "<script>document.getElementById('profile_image').setAttribute('src','assets/img/user/".$basename."')</script>";
 						echo "<script>document.getElementById('email_edit').setAttribute('value','".$email."')</script>";
 						echo "<script>document.getElementById('edit_first').setAttribute('value','".$first_name."')</script>";
 						echo "<script>document.getElementById('edit_last').setAttribute('value','".$last_name."')</script>";

@@ -2,7 +2,7 @@ function validate_pass(e){
     
     let password =document.getElementById("new_pass");
     let re_password = document.getElementById("conf_new_pass");
-    let pass =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    let pass =  /^(.\d)(.[a-z])(.[A-Z]).{6,20}$/;
     if(password.value==re_password.value && password.value.match(pass) ){
         document.getElementById("match_yes").style.display="block";
         document.getElementById("match_none").style.display="none";
@@ -85,7 +85,7 @@ function apear_sign_in(){
 }function apear_sign_up(){
     document.getElementById("have_acc").style.display          ="block";
     document.getElementById("reset_pass").style.display        ="none";
-    document.getElementById("rem_pass").style.display           ="none";
+    document.getElementById("rem_pass").style.display          ="none";
     document.getElementById("sign-in").style.display           ="block";
     document.getElementById("sign-up").style.display           ="none";
     document.getElementById("full-name").style.display         ="";
@@ -100,24 +100,35 @@ function reset(){
     document.getElementById("submit").innerText                ="Reset";
     document.getElementById("submit").name                     ="reset";
     document.getElementById("pass").style.display="none";
-    document.getElementById("rem_pass").style.display           ="block";
+    document.getElementById("rem_pass").style.display          ="block";
     document.getElementById("reset_pass").style.display        ="none";
     document.getElementById("password").removeAttribute("required");
 }
 function show_desc(desc){
    document.getElementById("desc_showed").innerText=desc;
 }
-function edit_b(id,name,desc,link,quantity,price){
+function edit_b(id,name,desc,link,quantity,price,photo){
     document.getElementById("edit_name").value     = name;
     document.getElementById("edit_link").value     = link;
     document.getElementById("edit_quantity").value = quantity;
     document.getElementById("edit_price").value    = price;
     document.getElementById("edit_desc").value     = desc;
-}
-function show_photo(photo,id){
+    document.getElementById("b_id").value          = id;
     document.getElementById('b_photo').setAttribute('src','assets/img/product/'+photo);
     document.getElementById("auto_url_photo").value = photo;
-    document.getElementById("b_id_pho").value       = id;
-
 }
+function delete_b(id){
+    document.getElementById("b_id_delete").value   = id;
+}
+// function isValid() {
+//     let link = document.getElementById("link_add");
+//     try {
+//       let have = new URL(link.value);
+//       document.getElementById("add_book").click();
+//       document.getElementById("match_link").style.display="none";
+//     } catch (err) {
+//         document.getElementById("match_link").style.display="block";
+        
+//     }
+//   }
 

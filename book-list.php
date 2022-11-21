@@ -19,6 +19,7 @@
 	<link href="assets/css/default/app.min.css" rel="stylesheet" />
 	<link href="assets/css/styles.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- ================== END core-css ================== -->
 </head>
 <body>
@@ -43,8 +44,8 @@
 			
 
 			<!-- Modal -->
-			<?php include("includes/products_modal.php"); ?>
-			<?php include("includes/products_add_modal.php"); ?>
+			<?php include("includes/modals/products_modal.php"); ?>
+			<?php include("includes/modals/products_add_modal.php"); ?>
 			<?php  require "includes/profile.php";?>
 			<!-- end modal -->
 		
@@ -60,7 +61,7 @@
 
 
 		<!-- BEGIN #content -->
-		    <div class="background-radial-gradient overflow-hidden row vh-100" >
+		    <div class="background-radial-gradient overflow-hidden row vh-100">
 			<div class="col-1" style="position:fixed">
 			<?php  require "includes/aside.php";?>
             </div>
@@ -98,7 +99,8 @@
 						<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
 					</div>
 			    <?php endif ?>
-			<table class="table table-light table-bordered min-w-100">
+		<div class="table-responsive">
+			<table class="table table-light table-bordered" style="min-width:700px;">
 			<thead>
 				<tr>
 				<th >Name</th>
@@ -117,28 +119,33 @@
 				$result = mysqli_query($conn, $sql);
 				if (mysqli_num_rows($result) > 0){
 				while($row = mysqli_fetch_assoc($result)){
+					if(strlen($row["description"])<30){
+						$desc=$row["description"];
+					}else{
+						$desc=substr($row["description"],30)."...";
+					}
 				?>
 				<tr>
 				<th ><?php  echo $row["name"]?></th>
-				<td><img src="assets/img/product/<?php echo $row["photo"]?>" width="50"  alt=""><button type="button" class="btn btn-outline-info btn-sm ms-2" onclick="show_photo(`<?php echo $row['photo']?>`,<?php echo $row['id'];?>)" data-bs-toggle="modal" data-bs-target="#edit_photo">edit</button></td>
-				<td><button type="button" class="btn btn-info" onclick="show_desc(`<?php echo $row['description']?>`)" data-bs-toggle="modal" data-bs-target="#descriptiona">View</button></td>
+				<td><img src="assets/img/product/<?php echo $row["photo"]?>" width="50"  alt=""></td>
+				<td><?php  echo $desc;?><br><button type="button" class="btn btn-info btn-sm mt-2" onclick="show_desc(`<?php echo $row['description']?>`)" data-bs-toggle="modal" data-bs-target="#descriptiona">more</button></td>
 				<td><?php  echo $row["link"]?></td>
 				<td><?php  echo $row["quantity"]?></td>
 				<td>$ <?php  echo $row["price"]?></td>
-				<td><button type="button" class="btn btn-primary" onclick="edit_b(<?php echo $row['id'];?>,`<?php echo $row['name']?>`,`<?php echo $row['description']?>`,`<?php echo $row['link']?>`,`<?php echo $row['quantity']?>`,`<?php echo $row['price']?>`)" data-bs-toggle="modal" data-bs-target="#edit">Edit</button><button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#delete">Delete</button></td>
+				<td><button type="button" class="btn btn-primary" onclick="edit_b(<?php echo $row['id'];?>,`<?php echo $row['name']?>`,`<?php echo $row['description']?>`,`<?php echo $row['link']?>`,`<?php echo $row['quantity']?>`,`<?php echo $row['price']?>`,`<?php echo $row['photo']?>`)" data-bs-toggle="modal" data-bs-target="#edit">View & Edit</button><button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#delete" onclick="delete_b(<?php echo $row['id'];?>)">Delete</button></td>
 				</tr>
-
 				<?php }} ?>
 			</tbody>
 			</table>
-		
+		</div>
 			</div>
 			</div>
 		<!-- END #content -->
 		<!-- products-modals -->
 		
-		<?php include("includes/products_add_modal.php"); ?>
-		<?php include("includes/admins_modal.php"); ?>
+		<?php include("includes/modals/products_add_modal.php"); ?>
+		<?php include("includes/modals/products_solded_modal.php"); ?>
+		<?php include("includes/modals/admins_modal.php"); ?>
 		<!-- products-modals -->
 
 			

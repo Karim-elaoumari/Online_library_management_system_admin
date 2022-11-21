@@ -3,6 +3,11 @@
 <?php
     include('includes/session_user.php');
 	include('includes/database.php');
+	include('includes/states.php');
+	$total_sales_t   = total_today_sales($conn);
+	$total_sales     = total_sales($conn);
+	$total_books     = total_books($conn);
+	$total_admins    = total_admins($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -10,32 +15,27 @@
 	<meta charset="utf-8" />
 	<title>YouCode Library | Control Panel</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-	<meta content="" name="description" />
-	<meta content="" name="author" />
+	<meta content="" name="description"/>
+	<meta content="" name="author"/>
 	
 	<!-- ================== BEGIN core-css ================== -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<link href="assets/css/vendor.min.css" rel="stylesheet" />
 	<link href="assets/css/default/app.min.css" rel="stylesheet" />
-	<link href="assets/css/styles.css" rel="stylesheet" />
-	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!-- ================== END core-css ================== -->
+	<link href="assets/css/styles.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- ==================  END core-css  ================== -->
 </head>
 <body>
 
-
-
-  
 	<!-- BEGIN #app -->
-	<div id="app" class="app-without-sidebar bg-gray-200">
+	<div  class=" bg-gray-200">
 		<!-- Section: Design Block -->
 
 		<!-- Section: Design Block -->
-		<div id="loader" class="app-loader">
-			<span class="spinner"></span>
-		</div>
-	    <!-- END #loader -->
+		
+	   
 	    <!-- nav bar -->
 		<?php  require "includes/header-admin.php";?>
 		<!-- nav bar -->
@@ -44,7 +44,7 @@
 			
 
 			<!-- Modal -->
-			<?php include("includes/products_add_modal.php"); ?>
+			<?php include("includes/modals/products_add_modal.php"); ?>
 			<?php  require "includes/profile.php";?>
 			<!-- end modal -->
 			
@@ -97,7 +97,7 @@
 					<div class="card col-6 mt-5 bg-danger" style="width: 25rem;color:white;border-radius:0;">
 						<div class="card-body row">
 							<div class="col-8">
-								<h2 class="card-title">$ 2</h2>
+								<h2 class="card-title">$ <?php echo $total_sales;?></h2>
 								
 								<h4 class="card-text">Total Sales</h4>
 							</div>
@@ -107,13 +107,13 @@
 						
 						</div>
 						<div class="card-header text-center">
-						<a href="sales.php" class="text-decoration-none text-black">More info <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="sales.php" class="text-decoration-none text-black" data-bs-toggle="modal" data-bs-target="#books_solded">More info <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
 					<div class="card col-6 mt-5 bg-info" style="width: 25rem;color:white;border-radius:0;">
 						<div class="card-body row">
 							<div class="col-8">
-								<h2 class="card-title">40</h2>
+								<h2 class="card-title"><?php echo $total_books;?></h2>
 								
 								<h4 class="card-text">Number Of Books</h4>
 							</div>
@@ -124,7 +124,7 @@
 					
 						</div>
 						<div class="card-header text-center">
-						<a href="sales.php" class="text-decoration-none text-black">More info <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="book-list.php" class="text-decoration-none text-black">More info <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -132,7 +132,7 @@
 					<div class="card col-6 mt-5" style="width: 25rem;background-color:#36f569;color:white;border-radius:0;">
 						<div class="card-body row">
 							<div class="col-8">
-								<h2 class="card-title">5</h2>
+								<h2 class="card-title"><?php echo $total_admins;?></h2>
 								
 								<h4 class="card-text">Number Of Admins</h4>
 							</div>
@@ -142,14 +142,14 @@
 						
 						</div>
 						<div class="card-header text-center">
-						<a href="sales.php" class="text-decoration-none text-black">More info <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="" class="text-decoration-none text-black" data-bs-toggle="modal" data-bs-target="#admins">More info <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					
 					</div>
 					<div class="card col-6 mt-5 bg-warning"  style="width: 25rem;color:white;border-radius:0;">
 						<div class="card-body row">
 							<div class="col-8">
-								<h2 class="card-title">$ 10</h2>
+								<h2 class="card-title">$ <?php echo $total_sales_t;?></h2>
 								
 								<h4 class="card-text">Sales Today</h4>
 							</div>
@@ -163,7 +163,7 @@
 						
 						</div>
 						<div class="card-header text-center">
-						<a href="sales.php" class="text-decoration-none text-black">More info <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="" class="text-decoration-none text-black"  data-bs-toggle="modal" data-bs-target="#books_solded_t" >More info <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					
 					</div>
@@ -183,8 +183,8 @@
 			
 		<!-- END #content -->
 		
-		<?php include("includes/products_solded_modal.php"); ?>
-		<?php include("includes/admins_modal.php"); ?>
+		<?php include("includes/modals/products_solded_modal.php"); ?>
+		<?php include("includes/modals/admins_modal.php"); ?>
 		
 
 		<!-- BEGIN scroll-top-btn -->
@@ -198,8 +198,8 @@
 	<!-- ================== BEGIN core-js ================== -->
     
 	<script src="assets/js/vendor.min.js"></script>
-	<script src="assets/js/app.min.js"></script>
-	<script src="assets/js/scripts.js"></script>
+	<script src="assets/js/app.min.js"   ></script>
+	<script src="assets/js/scripts.js"   ></script>
     
 	<!-- ================== END core-js ================== -->
 </body>
