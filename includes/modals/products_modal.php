@@ -122,7 +122,7 @@ if(isset($_POST["edit_b_all"])){
   $extension  = pathinfo( $picc, PATHINFO_EXTENSION); // jpg
 	$basename   = substr($_POST["auto_b_photo"], 0, -4). "." . $extension; // 5dab1961e93a7_1571494241.jpg
   $target              = "assets/img/product/".$basename;
-  $sourcePath          = $_FILES["edit_b_photo"]["tmp_name"];
+  $sourcePath          = $_FILES["edit_b_photo"]["tmp_name"];  /*  is used to copy the original name of the file which is uploaded */
   if($quantity<=0){
     $_SESSION['danger'] = 'Quantity Most be valide !';
    }

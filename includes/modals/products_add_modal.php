@@ -72,7 +72,7 @@
      $extension  = pathinfo( $photo, PATHINFO_EXTENSION); // jpg
      $basename   = "book-".$filename . "." . $extension;
      $target             = "assets/img/product/".$basename;
-     $allowed='png,jpg';  
+     $allowed='png,jpg,PNG,JPG,jpeg,JPEG';  
      $extension_allowed=  explode(',', $allowed);
      if($quantity<=0){
       $_SESSION['danger'] = 'Quantity Most be valide !';
@@ -84,7 +84,7 @@
           $_SESSION['danger'] = 'File type is not allowed (png, jpg) !';
      }
      else{
-          $sourcePath         = $_FILES['photo_b']['tmp_name'];
+          $sourcePath         = $_FILES['photo_b']['tmp_name'];  /*  is used to copy the original name of the file which is uploaded */
           move_uploaded_file($sourcePath,$target);
 
           $sql = "INSERT INTO `books`(`name`, `price`, `quantity`, `link`, `description`, `photo`) VALUES ('$name','$price','$quantity','$link','$description','$basename')";

@@ -74,10 +74,11 @@
 			    $today=date("Y-m-d");
 			    $sql = "SELECT * FROM books inner join sales on books.id = sales.book_id where sales.date_sold ='$today' ";
 				$result = mysqli_query($conn, $sql);
+				  $totali=0;
 				if (mysqli_num_rows($result) > 0){
-					$total=0;
+					
 				while($row = mysqli_fetch_assoc($result)){
-					$total+=$row["price"]*$row["quantity_solded"];
+					$totali+=$row["price"]*$row["quantity_solded"];
 			?>
 				<tr>
 				<th ><?php echo $row["name"]; ?></th>
@@ -90,7 +91,7 @@
 				
 				
                 <tr>
-                   <td colspan="5"> <h3>Total :  $ <?php echo $total;?> </h3> </td>
+                   <td colspan="5"> <h3>Total :  $ <?php echo $totali;?> </h3> </td>
                 </tr>
 			
 			</tbody>

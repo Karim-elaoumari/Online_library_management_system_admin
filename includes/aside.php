@@ -10,11 +10,9 @@
 			    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Book list">
 				<button type="button" class="btn btn-outline-primary mt-4  px-3 py-2 bg-white"><a href="book-list.php"><i class="fa fa-book fs-4"></i></a></button>
                 </span>
-
 				<!-- <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Edit Books">
 				<button type="button" class="btn btn-outline-primary mt-4 ms-1 px-2 bg-white"><i class="fa fa-pencil-square fs-4"></i></button>
                 </span> -->
-
 				<span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Book Solded">
 				<button type="button" class="btn btn-outline-primary mt-4  px-3 py-2 bg-white" data-bs-toggle="modal" data-bs-target="#books_solded"><i class="fa-solid fa-square-check fs-4"></i></button>
 				</span>

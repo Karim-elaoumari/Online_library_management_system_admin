@@ -19,9 +19,9 @@ if(isset($_POST['sign-up'])){
     }
     if($is==0){
         $set='123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		$code=substr(str_shuffle($set), 0, 12);
+		$code=substr(str_shuffle($set), 0, 8);
         $sql = "INSERT INTO admins (first_name, last_name, email,password,photo)
-        VALUES ('$first_name', '$last_name', '$email','$code','user-12')";
+        VALUES ('$first_name', '$last_name', '$email','$code','user-12.jpg')";
 
         if (mysqli_query($conn, $sql)){
             $message = "

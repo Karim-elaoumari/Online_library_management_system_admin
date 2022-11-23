@@ -132,7 +132,7 @@
 				<td><?php  echo $row["link"]?></td>
 				<td><?php  echo $row["quantity"]?></td>
 				<td>$ <?php  echo $row["price"]?></td>
-				<td><button type="button" class="btn btn-primary" onclick="edit_b(<?php echo $row['id'];?>,`<?php echo $row['name']?>`,`<?php echo $row['description']?>`,`<?php echo $row['link']?>`,`<?php echo $row['quantity']?>`,`<?php echo $row['price']?>`,`<?php echo $row['photo']?>`)" data-bs-toggle="modal" data-bs-target="#edit">View & Edit</button><button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#delete" onclick="delete_b(<?php echo $row['id'];?>)">Delete</button></td>
+				<td><button type="button" class="btn btn-primary w-70px m-1" onclick="edit_b(<?php echo $row['id'];?>,`<?php echo $row['name']?>`,`<?php echo $row['description']?>`,`<?php echo $row['link']?>`,`<?php echo $row['quantity']?>`,`<?php echo $row['price']?>`,`<?php echo $row['photo']?>`)" data-bs-toggle="modal" data-bs-target="#edit">Edit</button><button type="button" class="btn btn-danger m-1 w-70px" data-bs-toggle="modal" data-bs-target="#delete" onclick="delete_b(<?php echo $row['id'];?>)">Delete</button></td>
 				</tr>
 				<?php }} ?>
 			</tbody>

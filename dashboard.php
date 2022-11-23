@@ -154,10 +154,7 @@
 								<h4 class="card-text">Sales Today</h4>
 							</div>
 							<div class="col-4 ">
-								
 								<i class="fa-sharp fa-solid fa-money-bill-wave fa-4x text-orange-800 pt-2"></i>
-								
-								
 							</div>
 
 						
@@ -169,10 +166,7 @@
 					</div>
 					
 				</div>
-				<!-- test -->
-				
-				
-				<!-- test -->
+			
 			
 			</div>
 			

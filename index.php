@@ -4,21 +4,23 @@
     include('includes/login.php');
     include('includes/sign-up.php');
 	include('includes/reset.php');
+if(isset($_SESSION["user_id"])){
+    header("location:dashboard.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
 	<meta charset="utf-8" />
-	<title>YouCode Library | Control Panel</title>
+	<title>YouCode Library | Home Page </title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
 	
 	<!-- ================== BEGIN core-css ================== -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 	<link href="assets/css/vendor.min.css" rel="stylesheet"/>
 	<link href="assets/css/default/app.min.css" rel="stylesheet"/>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="assets/css/styles.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<!-- ================== END core-css ================== -->
@@ -30,15 +32,16 @@
   
 	<!-- BEGIN #app -->
 	<div id="app" class="app-without-sidebar bg-gray-200">
-		<!-- Section: Design Block -->
 
-<!-- Section: Design Block -->
-	<div id="loader" class="app-loader">
-		<span class="spinner"></span>
-	</div>
-	<!-- END #loader -->
 	    <!-- nav bar -->
-		<?php  include("includes/header-sign.php");?>
+		<nav class="navbar navbar-light bg-light">
+			<a class="navbar-brand fs-2" href="#">
+				<img src="assets/img/logo/logo-q.png" width="50" height="" class="d-inline-block align-top ms-2" alt="">
+			You<span  style="color: hsl(218, 81%, 75%)">Code</span> Library
+			</a>
+		<button type="button"  id="sign-in" onclick="apear_sign_in()" class="btn btn-primary btn-sm me-4">Sign-in</button>
+		<button type="button" id="sign-up" onclick="apear_sign_up()" class="btn btn-primary btn-sm me-4" style="display:none;">Sign-up</button>
+		</nav>
 		<!-- nav bar -->
 
 
@@ -87,24 +90,20 @@
 					</p>
 				</div>
 
-				<div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-					<div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-					<div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
-
-					<div class="card bg-glass">
+				<div class="col-lg-6 mb-5 mb-lg-0">
+					<div class="card">
 					<div class="card-body px-4 py-5 px-md-5">
 						<form action="" method="post">
-						<!-- 2 column grid layout with text inputs for the first and last names -->
 						<div class="row" id="full-name">
 							<div class="col-md-6 mb-4">
-							<div class="form-outline" >
-								<input type="text" id="first_name" pattern="[A-Za-z]{3,10}" name="first-name" class="form-control"  required />
+							<div class="form-outline">
+								<input type="text" id="first_name" pattern="[A-Za-z]{3,10}" name="first-name" class="form-control"  oninvalid="this.setCustomValidity('Enter Name With just characters')" oninput="this.setCustomValidity('')"required />
 								<label class="form-label" for="form3Example1">First name</label>
 							</div>
 							</div>
 							<div class="col-md-6 mb-4" >
 							<div class="form-outline">
-								<input type="text" id="last_name" pattern="[A-Za-z]{3,10}" name="last-name" class="form-control" required/>
+								<input type="text" id="last_name" pattern="[A-Za-z]{3,10}" name="last-name" class="form-control" oninvalid="this.setCustomValidity('Enter Name With just characters')" oninput="this.setCustomValidity('')" required/>
 								<label class="form-label" for="form3Example2">Last name</label>
 							</div>
 							</div>
@@ -115,7 +114,6 @@
 							<input type="email" name="email" class="form-control" required/>
 							<label class="form-label" for="form3Example3">Email address</label>
 						</div>
-
 						<!-- Password input -->
 						<div class="form-outline mb-4" id="pass" style="display:none">
 							<input type="password" id="password" name="password" class="form-control"/>
